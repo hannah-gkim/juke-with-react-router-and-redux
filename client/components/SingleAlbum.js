@@ -5,6 +5,14 @@ import { fetchCurrentAlbum } from '../redux/currentAlbum';
 import { AlbumCard, AllSongs } from './';
 
 const SingleAlbum = () => {
+	
+	//instead of
+
+	/*
+	componentDidMount() {
+		this.props.fetchCurrentAlbum(this.props.match.params.id);
+	}
+	*/
 	const { id } = useParams();
 
 	const dispatch = useDispatch();

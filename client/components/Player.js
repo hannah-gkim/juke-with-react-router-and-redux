@@ -1,4 +1,6 @@
 import React from 'react';
+//no more connect but...
+//useSelector and useDispatch
 import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentSong } from '../redux/currentSong';
 import { setPaused } from '../redux/audio';
@@ -9,6 +11,7 @@ import PlayPauseBtn from './PlayPauseBtn';
 const backIcon = 'fa fa-step-backward';
 const forwardIcon = 'fa fa-step-forward';
 
+//originally was inside  class?
 // functions for song navigation
 const setPreviousSong = (currentAlbum, currentSong, audioRef, dispatch) => {
 	if (!currentAlbum.songs) return;
@@ -22,6 +25,12 @@ const setPreviousSong = (currentAlbum, currentSong, audioRef, dispatch) => {
 
 	const previousSong = currentAlbum.songs[previousIndex];
 
+	//instead of
+	/*
+	this.props.setCurrentSong(previousSong);
+		handlePlayerBtnClick(audioRef, previousSong.audioUrl);
+		this.props.setPaused(audioRef.paused);
+	*/
 	dispatch(setCurrentSong(previousSong));
 	handlePlayerBtnClick(audioRef, previousSong.audioUrl);
 	dispatch(setPaused(audioRef.paused));
@@ -44,7 +53,12 @@ const setNextSong = (currentAlbum, currentSong, audioRef, dispatch) => {
 	dispatch(setPaused(audioRef.paused));
 };
 
+//instead of class, use function
 const Player = () => {
+
+	//instead of
+	//	const { currentAlbum, currentSong, audioRef, trackTime } = this.props;
+
 	const audioRef = useSelector(state => state.audio.audioRef);
 	const trackTime = useSelector(state => state.audio.trackTime);
 	const currentAlbum = useSelector(state => state.currentAlbum);
@@ -90,3 +104,20 @@ const Player = () => {
 };
 
 export default Player;
+
+/*
+const mapState = state => ({
+	audioRef: state.audio.audioRef,
+	trackTime: state.audio.trackTime,
+	currentAlbum: state.currentAlbum,
+	currentSong: state.currentSong,
+});
+
+const mapDispatch = dispatch => ({
+	setCurrentSong: song => dispatch(setCurrentSong(song)),
+	setPaused: status => dispatch(setPaused(status)),
+});
+
+export default connect(mapState, mapDispatch)(Player);
+
+*/

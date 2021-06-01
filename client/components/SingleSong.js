@@ -2,6 +2,16 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import PlayPauseBtn from './PlayPauseBtn';
 
+
+//instead of being class and
+//istead of...
+/*
+	const { song, currentSong, isPaused, trackNumber } = this.props;
+
+	the function is taking {trackNumber, song}
+
+	how??? because of useSelector??
+*/
 const SingleSong = ({ trackNumber, song }) => {
 	const currentSong = useSelector(state => state.currentSong);
 	const isPaused = useSelector(state => state.audio.isPaused);
