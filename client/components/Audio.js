@@ -32,6 +32,9 @@ const Audio = () => {
   const audioRef = useRef(null);
   const dispatch = useDispatch();
 
+  //what is useEffect?  -> it tells React that component needs to do something after render.
+  //React will remember the fuction you passed and call after performing DOM updates
+  //instead of mapDispatch
   useEffect(() => {
     dispatch(setAudioRef(audioRef));
   }, []);

@@ -7,12 +7,14 @@ import { handlePlayerBtnClick } from './Audio';
 const playIcon = 'fa fa-play-circle';
 const pauseIcon = 'fa fa-pause-circle';
 
+//{song} coming from SingleSong.js
 //when using class, handleClick had to be binded
 const PlayPauseBtn = ({ song }) => {
 	const audioRef = useSelector(state => state.audio.audioRef);
 	const currentSong = useSelector(state => state.currentSong);
 	const isPaused = useSelector(state => state.audio.isPaused);
 
+	//like mapToDispatch
 	const dispatch = useDispatch();
 	//when using class, it would have been under mapDispatch
 	const updateCurrentSong = thisSong => dispatch(setCurrentSong(thisSong));
